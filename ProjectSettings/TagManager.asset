@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground
+  - Water
+  - UI
+  - Player
+  - Enemy
+  - Box
+  - Tufts
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BlackGround
+    uniqueID: 876852097
+    locked: 0
+  - name: Tufts
+    uniqueID: 4008220871
+    locked: 0
+  - name: Box
+    uniqueID: 3642466567
+    locked: 0
+  - name: Enemy
+    uniqueID: 1806698151
+    locked: 0
+  - name: Character
+    uniqueID: 3423204509
+    locked: 0
+  - name: Tree
+    uniqueID: 2028400341
+    locked: 0
