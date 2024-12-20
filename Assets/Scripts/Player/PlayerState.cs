@@ -9,6 +9,8 @@ public class PlayerState : ScriptableObject, IState
     protected PlayerStateMachine stateMachine;
     protected float stateTimer;
 
+    protected bool triggerBack;
+
     public void Initialize(Animator _anim, PlayerInput _input, PlayerStateMachine _stateMachine, PlayerController _player)
     {
         this.anim = _anim;
@@ -19,10 +21,12 @@ public class PlayerState : ScriptableObject, IState
 
     public virtual void Enter()
     {
+        triggerBack = false;
     }
 
     public virtual void Exit()
     {
+        triggerBack = true;
     }
 
     public virtual void LogicUpdate()

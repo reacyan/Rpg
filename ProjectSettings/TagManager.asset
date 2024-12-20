@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -44,18 +45,6 @@ TagManager:
   - name: BlackGround
     uniqueID: 876852097
     locked: 0
-  - name: Tufts
-    uniqueID: 4008220871
-    locked: 0
-  - name: Box
-    uniqueID: 3642466567
-    locked: 0
-  - name: Enemy
-    uniqueID: 1806698151
-    locked: 0
-  - name: Character
-    uniqueID: 3423204509
-    locked: 0
-  - name: Tree
-    uniqueID: 2028400341
+  - name: Render
+    uniqueID: 1173886381
     locked: 0
