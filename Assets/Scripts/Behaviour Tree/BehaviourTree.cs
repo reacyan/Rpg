@@ -12,6 +12,8 @@ public class BehaviourTree : Node
         {
             var status = children[currentChild].Process();
 
+            Debug.Log(status);
+
             if (status != Status.Success) return status;
 
             currentChild++;
