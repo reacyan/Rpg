@@ -1,45 +1,31 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Entity
 {
     PlayerInput input;
-    Color defaultColor;
 
-    public float walkSpeed;
-    public float runSpeed;
-    protected Rigidbody2D rb;
+    //public Vector3 inputDirection => new Vector3(input.currentAxes.x, input.currentAxes.y, 0);  //获取输入向量
 
-
-    public Vector3 inputDirection => new Vector3(input.currentAxes.x, input.currentAxes.y, 0);
-
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         input = GetComponent<PlayerInput>();
 
-        rb = GetComponent<Rigidbody2D>();
+        //EntityDirection = new Vector3(input.currentAxes.x, input.currentAxes.y, 0);
     }
 
-    private void Start()
+    protected override void Start()
     {
         input.EnablePlayerControllerInput();
     }
 
-    public void SetVelocity(float _xVelocity, float _yVelocity)
-    {
-        rb.velocity = new Vector2(_xVelocity, _yVelocity);
-    }
-
-    public void SetZeroVelocity()
-    {
-        rb.velocity = Vector2.zero;
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Tree"))
         {
-            defaultColor = other.gameObject.GetComponent<SpriteRenderer>().color;
             StartCoroutine(FadeTree(other));
             //other.gameObject.GetComponent<SpriteRenderer>().color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 0.5f);
         }
@@ -54,28 +40,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator FadeTree(Collider2D other)
+    IEnumerator FadeTree(Collider2D other) //隐藏树
     {
         float alpha = 1;
 
         while (alpha > 0.6f)
         {
             alpha -= Time.deltaTime;
-            other.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alpha);
+            other.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alpha); //降低透明度
             yield return null;
         }
 
     }
 
-    IEnumerator ShowTree(Collider2D other)
+    IEnumerator ShowTree(Collider2D other) //显示树
     {
         float alpha = 0.6f;
 
         while (alpha < 1)
         {
             alpha += Time.deltaTime;
-            other.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alpha);
+            other.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alpha); //提高透明度
             yield return null;
+        }
+    }
+
+    Vector3 VectorChange(Vector3 targetVector)
+    {
+        float angle = Vector3.Angle(targetVector, EntityDirection);
+
+        float epsilon = 0.1f;
+
+        if (angle < epsilon)
+        {
+            return EntityDirection;
+        }
+        else
+        {
+            return targetVector;
         }
     }
 }

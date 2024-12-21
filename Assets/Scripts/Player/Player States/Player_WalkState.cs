@@ -9,15 +9,19 @@ public class Player_WalkState : PlayerState
 {
     public override void Enter()
     {
+        base.Enter();
+
         anim.Play("Walk");
     }
 
     public override void LogicUpdate()
     {
+        base.LogicUpdate();
+
         anim.SetFloat("MoveX", input.currentAxes.x);
         anim.SetFloat("MoveY", input.currentAxes.y);
 
-        player.SetVelocity(player.inputDirection.x * player.walkSpeed, player.inputDirection.y * player.walkSpeed);
+        player.SetVelocity(input.currentAxes.x * player.walkSpeed, input.currentAxes.y * player.walkSpeed);
 
         if (!input.move)
         {
@@ -31,6 +35,8 @@ public class Player_WalkState : PlayerState
 
     public override void Exit()
     {
+        base.Exit();
+
         player.SetZeroVelocity();
     }
 }

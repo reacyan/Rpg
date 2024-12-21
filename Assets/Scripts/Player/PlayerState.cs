@@ -11,7 +11,7 @@ public class PlayerState : ScriptableObject, IState
 
     protected bool triggerBack;
 
-    public void Initialize(Animator _anim, PlayerInput _input, PlayerStateMachine _stateMachine, PlayerController _player)
+    public void Initialize(Animator _anim, PlayerInput _input, PlayerController _player, PlayerStateMachine _stateMachine)
     {
         this.anim = _anim;
         this.input = _input;

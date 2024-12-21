@@ -6,15 +6,19 @@ public class Player_RunState : PlayerState
 {
     public override void Enter()
     {
+        base.Enter();
+
         anim.Play("Run");
     }
 
     public override void LogicUpdate()
     {
+        base.LogicUpdate();
+
         anim.SetFloat("MoveX", input.currentAxes.x);
         anim.SetFloat("MoveY", input.currentAxes.y);
 
-        player.SetVelocity(player.inputDirection.x * player.runSpeed, player.inputDirection.y * player.runSpeed);
+        player.SetVelocity(input.currentAxes.x * player.runSpeed, input.currentAxes.y * player.runSpeed);
 
         if (!input.move)
         {
@@ -28,6 +32,8 @@ public class Player_RunState : PlayerState
 
     public override void Exit()
     {
+        base.Exit();
+
         player.SetZeroVelocity();
     }
 }

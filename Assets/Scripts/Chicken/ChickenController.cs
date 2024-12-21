@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChickenController : MonoBehaviour
+public class ChickenController : Entity
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void SetVelocity(float _xVelocity, float _yVelocity)
     {
-        
+        base.SetVelocity(_xVelocity, _yVelocity);
+
+        EntityDirection = new Vector3(_xVelocity, _yVelocity, 0).normalized;
     }
+
 }

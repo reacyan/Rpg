@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    [SerializeField] PlayerState[] states;
+    [SerializeField] PlayerState[] states;  //创建一个state数组
     PlayerInput input;
 
     PlayerController player;
@@ -20,9 +20,9 @@ public class PlayerStateMachine : StateMachine
 
         player = GetComponent<PlayerController>();
 
-        foreach (PlayerState state in states)
+        foreach (PlayerState state in states)  //为state字典填充state
         {
-            state.Initialize(anim, input, this, player);
+            state.Initialize(anim, input, player, this);
             stateTable.Add(state.GetType(), state);
         }
     }

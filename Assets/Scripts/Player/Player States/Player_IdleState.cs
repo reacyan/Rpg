@@ -5,11 +5,15 @@ public class Player_IdleState : PlayerState
 {
     public override void Enter()
     {
+        base.Enter();
+
         anim.Play("Idle");
     }
 
     public override void LogicUpdate()
     {
+        base.LogicUpdate();
+
         anim.SetFloat("MoveX", input.currentAxes.x);
         anim.SetFloat("MoveY", input.currentAxes.y);
 
@@ -25,5 +29,6 @@ public class Player_IdleState : PlayerState
 
     public override void Exit()
     {
+        base.Exit();
     }
 }
